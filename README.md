@@ -15,8 +15,7 @@
      1. Login {Session Validation + redirection}
      2. Signup
      3. User Info + Role Maintanence
-     4. AWS - AMI cloud data view [Grid + Chart]
-     5. Asset Maintanence
+     4. Moodle Test Application
 
 ### Setup Database - Postgresql
 	CREATE DATABASE cloud_control
@@ -28,7 +27,7 @@
 	       CONNECTION LIMIT = -1;
 
 ### Start the application
-	1. open CloudControlApplication.java
+	1. open MoodleConductApplication.java
 	2. Run as Java Application
 	3. Application will be up in the port 2020
 	
