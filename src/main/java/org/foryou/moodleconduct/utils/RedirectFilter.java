@@ -2,7 +2,6 @@ package org.foryou.moodleconduct.utils;
 
 
 import java.io.IOException;
-import java.security.SignatureException;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
