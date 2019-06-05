@@ -28,5 +28,11 @@ public class RegistrationController {
 		UserCredentials userCredentials = registrationService.registerAppUser(registrationForm);
 		registrationService.setUserAuthority(userCredentials, VexamineConstants.MANAGER_ROLE);
 	}
+
+	@PostMapping("add/superadmin")
+	public void addSuperAdmin(@RequestBody UserRegistrationForm registrationForm) {
+		UserCredentials userCredentials = registrationService.registerAppUser(registrationForm);
+		registrationService.setUserAuthority(userCredentials, VexamineConstants.SUPER_ADMIN_ROLE);
+	}
 	
 }
