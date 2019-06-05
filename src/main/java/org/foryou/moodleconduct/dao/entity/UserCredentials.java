@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 @AllArgsConstructor
-@Table(name = "user_credentials")
+@Table(name = "vexamine_user_credentials")
 public class UserCredentials implements Serializable {
     private static final long serialVersionUID = -1L;
     @Id

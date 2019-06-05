@@ -34,11 +34,6 @@ public class UserAuthorityService {
 
 		UserAuthorityInfo userAuthorityInfo = UserAuthorityInfo.builder()
 				.userCredentials(userCredentials)
-				.admin(false)
-				.developer(true)
-				.tester(true)
-				.systemAdmin(false)
-				.manager(false)
 				.updateUser(sessionUser)
 				.build();
 
@@ -56,11 +51,6 @@ public class UserAuthorityService {
 
 		UserAuthorityInfo userAuthorityInfo = UserAuthorityInfo.builder()
 				.userCredentials(userCredentials)
-				.admin(authority.contains("ADMIN"))
-				.developer(authority.contains("DEVELOPER"))
-				.tester(authority.contains("TESTER"))
-				.systemAdmin(authority.contains("SYSTEM_ADMIN"))
-				.manager(authority.contains("MANAGER"))
 				.updateUser(sessionUser)
 				.updateDate(new Date())
 				.build();
@@ -87,21 +77,6 @@ public class UserAuthorityService {
 				.build();
 
 		List<String> userRoles = new ArrayList<String>();
-		if(userAuthorityInfo.isAdmin()) {
-			userRoles.add("ADMIN");
-		}
-		if(userAuthorityInfo.isDeveloper()) {
-			userRoles.add("DEVELOPER");
-		}
-		if(userAuthorityInfo.isTester()) {
-			userRoles.add("TESTER");
-		}
-		if(userAuthorityInfo.isSystemAdmin()) {
-			userRoles.add("SYSTEM-ADMIN");
-		}
-		if(userAuthorityInfo.isManager()) {
-			userRoles.add("MANAGER");
-		}
 		userAuthorityVo.setRoles(userRoles);
 		return userAuthorityVo;
 	}

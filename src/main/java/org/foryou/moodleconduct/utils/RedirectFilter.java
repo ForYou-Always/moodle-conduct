@@ -30,7 +30,7 @@ public class RedirectFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
 		HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
 
-		String requestURI = httpRequest.getRequestURI();
+		/*String requestURI = httpRequest.getRequestURI();
 		String redirectURI = httpRequest.getContextPath() + "/login";
 
 		boolean isLoggedIn = validateSession(httpRequest, httpResponse);
@@ -49,7 +49,8 @@ public class RedirectFilter implements Filter {
 			chain.doFilter(httpRequest, httpResponse);
 		} else {
 			httpResponse.sendRedirect(redirectURI);
-		}
+		}*/
+		chain.doFilter(httpRequest, httpResponse);
 	}
 
 	private boolean validateSession(HttpServletRequest httpRequest, HttpServletResponse httpResponse) {
