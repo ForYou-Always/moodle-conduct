@@ -1,27 +1,32 @@
 package org.foryou.moodleconduct.utils.storage;
 
+import org.springframework.util.ObjectUtils;
 
 public final class CookieSessionStorage {
 
-    private static final ThreadLocal<CookieSession> THREAD_LOCAL = new ThreadLocal();
+	private static final ThreadLocal<CookieSession> THREAD_LOCAL = new ThreadLocal();
 
-    private CookieSessionStorage() {
+	private CookieSessionStorage() {
 
-    }
+	}
 
-    public static void set(CookieSession context) {
-        THREAD_LOCAL.set(context);
-    }
+	public static void set(CookieSession context) {
+		THREAD_LOCAL.set(context);
+	}
 
-    public static void unset() {
-        THREAD_LOCAL.remove();
-    }
+	public static void unset() {
+		THREAD_LOCAL.remove();
+	}
 
-    public static CookieSession get() {
-        return new CookieSession(THREAD_LOCAL.get());
-    }
+	public static CookieSession get() {
+		if(ObjectUtils.isEmpty(THREAD_LOCAL.get())) {
+			return  null;
+		}
 
-    public static String getCurrentUserName() {
-        return get().getUserName();
-    }
+		return new CookieSession(THREAD_LOCAL.get());
+	}
+
+	public static String getCurrentUserName() {
+		return get().getUserName();
+	}
 }

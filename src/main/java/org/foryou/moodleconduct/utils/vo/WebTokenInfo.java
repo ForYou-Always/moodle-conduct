@@ -7,6 +7,6 @@ public interface WebTokenInfo{
 
 	String WebTokenCookieName = "ASSET-MANAGEMENT-JWT-TOKEN";
 	Date SessionExpirationTime =  new Date(System.currentTimeMillis() + 3600000);
-	String SessionSecretKey = "manageAssets-DELLA";
+	String SessionSecretKey = "manageAssets-VEXAMINE";
 
 }

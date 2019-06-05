@@ -1,6 +1,5 @@
 package org.foryou.moodleconduct.controller;
 
-
 import org.foryou.moodleconduct.dao.entity.UserCredentials;
 import org.foryou.moodleconduct.dao.vo.UserAuthorityVo;
 import org.foryou.moodleconduct.service.UserAuthorityService;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 
 @RestController
 @RequestMapping("/user/credential/")
