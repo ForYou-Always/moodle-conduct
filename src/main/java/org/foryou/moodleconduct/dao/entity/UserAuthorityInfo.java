@@ -25,8 +25,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 @AllArgsConstructor
-@Table(name = "user_authority_info")
-
+@Table(name = "vexamine_user_authority_info")
 public class UserAuthorityInfo implements Serializable {
 	private static final long serialVersionUID = -1L;
 	@Id
@@ -36,16 +35,10 @@ public class UserAuthorityInfo implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "user_id")
 	private UserCredentials userCredentials;
-
-	private boolean admin;
-
-	private boolean developer;
-
-	private boolean tester;
-
-	private boolean systemAdmin;
-
-	private boolean manager;
+	
+	@OneToOne
+	@JoinColumn(name = "user_role_id")
+	private Role userRole;
 
 	private String createUser;
 

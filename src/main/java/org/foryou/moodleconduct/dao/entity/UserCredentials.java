@@ -4,6 +4,7 @@ package org.foryou.moodleconduct.dao.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,14 +24,17 @@ import lombok.NoArgsConstructor;
 @Entity
 @Builder
 @AllArgsConstructor
-@Table(name = "user_credentials")
+@Table(name = "vexamine_user_credentials")
 public class UserCredentials implements Serializable {
     private static final long serialVersionUID = -1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
+    @Column(unique = true)
     private String mailId;
+    
+    private String userName;
     
     private byte[] hashedPassword;
     
