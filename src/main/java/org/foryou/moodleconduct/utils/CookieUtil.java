@@ -19,7 +19,7 @@ public class CookieUtil {
     public static Cookie create(CookieSessionInfo cookieSessionInfo) {
         Cookie cookie = new Cookie(WebTokenInfo.WebTokenCookieName, cookieSessionInfo.getWebToken());
         cookie.setSecure(cookieSessionInfo.getHttpsFlag());
-//        cookie.setDomain(cookieSessionInfo.getDomain());// domain-name if exists. Ex: https://vexamine.com/
+//        cookie.setDomain(cookieSessionInfo.getDomain());// domain-name if exists. Ex: https://www.vexamine.com/
         cookie.setMaxAge(cookieSessionInfo.getMaxAge());
         cookie.setPath(cookieSessionInfo.getPath());
         cookie.setHttpOnly(true);

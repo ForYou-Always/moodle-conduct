@@ -1,7 +1,6 @@
 package org.foryou.moodleconduct.utils;
 
 
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
@@ -43,15 +42,4 @@ public class PasswordUtils {
 		return hashPasswordWithSalt(password.toCharArray(), salt.getBytes());
 	}
 	
-	public static String generateMd5SALT(int length) throws NoSuchAlgorithmException  {
-		MessageDigest md = MessageDigest.getInstance("MD5");
-		md.update(generateSALT(10).getBytes());
-		byte[] bytes = md.digest(generateSALT(10).getBytes());
-		StringBuilder md5SaltBuilder = new StringBuilder();
-		for(int i=0; i< bytes.length ;i++)
-		{
-			md5SaltBuilder.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-		}
-		return md5SaltBuilder.toString();
-	}
 }

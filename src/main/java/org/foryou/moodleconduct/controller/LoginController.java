@@ -8,14 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.foryou.moodleconduct.dao.entity.UserCredentials;
-import org.foryou.moodleconduct.dao.vo.SignUpForm;
+import org.foryou.moodleconduct.dao.vo.UserRegistrationForm;
 import org.foryou.moodleconduct.service.LoginService;
-import org.foryou.moodleconduct.service.UserAuthorityService;
-import org.foryou.moodleconduct.service.UserCredentialService;
+import org.foryou.moodleconduct.service.RegistrationService;
 import org.foryou.moodleconduct.utils.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,26 +21,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/vexamine")
 public class LoginController {
 
 	@Autowired
 	private LoginService loginService;
 	
-	@Autowired
-	private UserCredentialService userCredentialService;
-
-	@Autowired
-	private UserAuthorityService userAuthorityService;
-
 	@GetMapping("/home")
 	public String renderPlatform(){
-		return "asset-main.html";
+		return "vexamine-home.html";
 	}
 
-	@GetMapping("/login")
-	public String renderLoginPage(){
-		return "asset-login.html";
+	@GetMapping("/candidate/login")
+	public String renderCandiadteLoginPage(){
+		return "candidate-login.html";
+	}
+	
+	@GetMapping("/manager/login")
+	public String renderManagerLoginPage(){
+		return "manager-login.html";
 	}
 
 	@GetMapping("/logout")
@@ -51,9 +48,9 @@ public class LoginController {
 		httpResponse.sendRedirect("/login");
 	}
 
-	@PostMapping("/user/login")
+	@PostMapping("/validate/login")
 	@ResponseBody
-	public UserCredentials loginUser(@RequestBody SignUpForm signUpForm,HttpServletRequest httpRequest, HttpServletResponse httpResponse)throws IOException {
+	public UserCredentials loginUser(@RequestBody UserRegistrationForm signUpForm,HttpServletRequest httpRequest, HttpServletResponse httpResponse)throws IOException {
 		String userName = signUpForm.getMailId();
 		String password = signUpForm.getPassword();
 
@@ -61,34 +58,6 @@ public class LoginController {
 
 		Cookie cookie = loginService.maintainUserSession(userName, httpResponse);
 		httpResponse.addCookie(cookie);
-		return userCredentials;
-	}
-	
-	@PostMapping("/user/sign-up")
-	@ResponseBody
-	public UserCredentials signUp(@RequestBody SignUpForm signUpForm, HttpServletRequest httpRequest, HttpServletResponse httpResponse){
-		String userName = signUpForm.getMailId();
-		String password = signUpForm.getPassword();
-
-		UserCredentials userCredentials = userCredentialService.signUpNewUser(userName, password);
-
-		userAuthorityService.setNewUserAuthority(userCredentials);
-		return userCredentials;
-	}
-
-	@PostMapping("/user/register")
-	@ResponseBody
-	public UserCredentials registerNewUser(@RequestBody SignUpForm signUpForm, HttpServletRequest httpRequest, HttpServletResponse httpResponse){
-		String userName = signUpForm.getMailId();
-		String password = signUpForm.getPassword();
-
-		UserCredentials userCredentials = userCredentialService.signUpNewUser(userName, password);
-		
-		if(CollectionUtils.isEmpty(signUpForm.getAuthority())) {
-			userAuthorityService.setNewUserAuthority(userCredentials);
-		} else {
-			userAuthorityService.modifyUserAuthority(userCredentials, signUpForm.getAuthority());
-		}
 		return userCredentials;
 	}
 }

@@ -43,7 +43,6 @@ public class LoginService {
 
 	private UserCredentials checkUserExists(String userName) {
 		UserCredentials userCredentials = userCredentialRepo.findByMailId(userName);
-
 		if(ObjectUtils.isEmpty(userCredentials)) {
 			throw new IllegalArgumentException("User - \""+userName+"\" doesn't exists."
 					+ " So please verify your userName");
@@ -59,7 +58,7 @@ public class LoginService {
 				.path("/")      // allows reuests from path mentioned as prefix.
 				.maxAge(-1)     // Session will be Maintained till browser shutsdown.
 				.httpsFlag(false)
-				.domain("localhost")
+				.domain("vexamine.com")
 				.build();
 		return CookieUtil.create(cookieSessionInfo);
 	}

@@ -6,6 +6,7 @@ CREATE SEQUENCE public.vexamine_user_credentials_id_seq START WITH 1 INCREMENT B
 CREATE TABLE IF NOT EXISTS public.vexamine_user_credentials (
   id                          BIGINT NOT NULL DEFAULT nextval('vexamine_user_credentials_id_seq'),
   mail_id                     VARCHAR(150) UNIQUE NOT NULL,
+  user_name                     VARCHAR(150) UNIQUE NOT NULL,
   hashed_password             BYTEA,
   hashed_salt                 BYTEA,
   create_user                 VARCHAR(200),
