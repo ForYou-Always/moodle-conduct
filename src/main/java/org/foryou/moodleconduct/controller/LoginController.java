@@ -1,6 +1,5 @@
 package org.foryou.moodleconduct.controller;
 
-
 import java.io.IOException;
 
 import javax.servlet.http.Cookie;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.foryou.moodleconduct.dao.entity.UserCredentials;
 import org.foryou.moodleconduct.dao.vo.UserRegistrationForm;
 import org.foryou.moodleconduct.service.LoginService;
-import org.foryou.moodleconduct.service.RegistrationService;
 import org.foryou.moodleconduct.utils.CookieUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,12 +31,12 @@ public class LoginController {
 	}
 
 	@GetMapping("/candidate/login")
-	public String renderCandiadteLoginPage(){
+	public String renderCandidadteLoginPage(){
 		return "candidate-login.html";
 	}
 	
 	@GetMapping("/manager/login")
-	public String renderManagerLoginPage(){
+	public String renderManagerLoginPage() {
 		return "manager-login.html";
 	}
 

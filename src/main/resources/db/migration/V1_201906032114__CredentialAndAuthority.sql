@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS public.vexamine_user_authority_info (
   user_role_id                BIGINT NOT NULL,
   create_user                 VARCHAR(200),
   update_user                 VARCHAR(200),
-  create_date                 TIMESTAMP,
+  create_date                 TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   update_date                 TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
   FOREIGN KEY (user_id) REFERENCES public.vexamine_user_credentials (id),
